@@ -47,12 +47,10 @@ function clip(poly_points,x1,y1,x2,y2)
         let kx = poly_points[k][0];
         let ky = poly_points[k][1]; 
   
-        // Calculating position of first point 
-        // w.r.t. clipper line 
+        // Calculating position of first point (clipper line)
         let i_pos = (x2-x1) * (iy-y1) - (y2-y1) * (ix-x1); 
   
-        // Calculating position of second point 
-        // w.r.t. clipper line 
+        // Calculating position of second point (clipper line)
         let k_pos = (x2-x1) * (ky-y1) - (y2-y1) * (kx-x1); 
   
         // Case 1 : When both points are inside 
@@ -131,12 +129,6 @@ function SuthHodgClip()
              return poly_points;     
 } 
 
-
-
-
-
-
-//////////////////////////////////////////////////////////////////
 function Init(canvas, context,coordinates)
 {
 	let i = 0;
@@ -154,10 +146,6 @@ function Init(canvas, context,coordinates)
     context.fill();
 	context.closePath();
 }
-
-
-
-
 
 function DrawClip()
 {
@@ -181,17 +169,6 @@ function DrawClip()
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
 window.onload = function()
 {
 		let canvas = $("#frame")[0];
@@ -214,12 +191,3 @@ window.onload = function()
 			context.strokeRect(array[0], array[1], array[2], array[3]);
 		}	
 }	
-
-
-
-
-
-
-
-
-
