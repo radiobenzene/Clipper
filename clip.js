@@ -10,18 +10,17 @@ class Point
 
 let coordinates = [new Point(100,150), new Point(200,250),  new Point(300,200)];
 let array = []
-let poly_size = 3;
-let clipper_size = 4;
+let poly_size = 3; //The polygon size is 3, making it a triangle
+let clipper_size = 4; //The clipper has 4 sides
 let clipper_points;
 //debugger
 let poly_points = [[coordinates[0].x, coordinates[0].y], [coordinates[1].x, coordinates[1].y], [coordinates[2].x, coordinates[2].y]];
 
 function x_intersect(x1,y1,x2, y2, x3, y3, x4, y4)
 {
-  
-	 let num = (x1*y2 - y1*x2) * (x3-x4) -  (x1-x2) * (x3*y4 - y3*x4); 
-     let den = (x1-x2) * (y3-y4) - (y1-y2) * (x3-x4); 
-    return Math.trunc(num/den); 
+	let num = (x1*y2 - y1*x2) * (x3-x4) -  (x1-x2) * (x3*y4 - y3*x4); 
+   	let den = (x1-x2) * (y3-y4) - (y1-y2) * (x3-x4); 
+   	return Math.trunc(num/den); 
 }
 
 function y_intersect(x1,y1,x2,y2,x3,y3,x4,y4) 
@@ -33,11 +32,9 @@ function y_intersect(x1,y1,x2,y2,x3,y3,x4,y4)
 
 function clip(poly_points,x1,y1,x2,y2) 
 { 
-   // debugger
     let new_points=[];
     let new_poly_size = 0; 
     // (ix,iy),(kx,ky) are the co-ordinate values of 
-    // the points 
     for (let i = 0; i < poly_size; i++) 
     { 
         // i and k form a line in polygon 
@@ -69,11 +66,10 @@ function clip(poly_points,x1,y1,x2,y2)
             // Point of intersection with edge 
             // and the second point is added
             new_points[new_poly_size] = []; 
-            new_points[new_poly_size][0] = x_intersect(x1,y1, x2, y2, ix, iy, kx, ky);  //change made here
-            new_points[new_poly_size][1] = y_intersect(x1,y1, x2, y2, ix, iy, kx, ky);  //change i and k
+            new_points[new_poly_size][0] = x_intersect(x1,y1, x2, y2, ix, iy, kx, ky);  
+            new_points[new_poly_size][1] = y_intersect(x1,y1, x2, y2, ix, iy, kx, ky);  
             new_poly_size++; 
-  
-  			new_points[new_poly_size] = []; 
+  	    new_points[new_poly_size] = []; 
             new_points[new_poly_size][0] = kx; 
             new_points[new_poly_size][1] = ky; 
             new_poly_size++; 
@@ -88,15 +84,11 @@ function clip(poly_points,x1,y1,x2,y2)
             new_points[new_poly_size][1] = y_intersect(x1,y1, x2, y2, ix, iy, kx, ky); 
             new_poly_size++; 
         } 
-        else
-        {
-
-        }
-        // Case 4: When both points are outside 
+        else{}
+        
     } 
   
-    // Copying new points into original array 
-    // and changing the no. of vertices 
+    // Copying new points into original array and changing the no. of vertices 
     poly_size = new_poly_size; 
     for (let i = 0; i < poly_size; i++) 
     { 
