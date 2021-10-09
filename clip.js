@@ -100,17 +100,12 @@ function clip(poly_points,x1,y1,x2,y2)
 } 
 function SuthHodgClip()
 {
-           // let clipper_points = [[array[0], array[1]], [array[0] + array[2], array[1]], [array[0]+array[2], array[1]+array[3]], array[0],array[1]+array[3]];
-           // let poly_points = [[coordinates[0].x, coordinates[0].y], [coordinates[1].x, coordinates[1].y], [coordinates[2].x, coordinates[2].y]];
+         
            clipper_points = [[array[0], array[1]],[array[0],array[1]+array[3]] , [array[0]+array[2], array[1]+array[3]],[array[0] + array[2], array[1]]];
                         //i and k are two consecutive indexes 
                         for (let i=0; i<clipper_size; i++) 
                         { 
                             let k = (i+1) % clipper_size; 
-                      
-                            // We pass the current array of vertices, it's size 
-                            // and the end points of the selected clipper line 
-                          
                             clip(poly_points, clipper_points[i][0],clipper_points[i][1], clipper_points[k][0], clipper_points[k][1]); 
                             for (let index = 0; index < poly_size; index++) {
                                 console.log(poly_points[index][0]+" "+poly_points[index][1]);
@@ -126,8 +121,7 @@ function Init(canvas, context,coordinates)
 	let i = 0;
 	canvas.height = 500;
 	canvas.width = 500;
-	context.fillStyle ="#FF0010";//"#FF0010";
-	//context.fillRect(0,0,canvas.height, canvas.width);
+	context.fillStyle ="#FF0010";/
 	
     context.beginPath();
     context.moveTo(coordinates[0].x, coordinates[0].y);
