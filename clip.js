@@ -122,14 +122,13 @@ function Init(canvas, context,coordinates)
 	canvas.height = 500;
 	canvas.width = 500;
 	context.fillStyle ="#FF0010";/
-	
-    context.beginPath();
-    context.moveTo(coordinates[0].x, coordinates[0].y);
+	context.beginPath();
+    	context.moveTo(coordinates[0].x, coordinates[0].y);
 
 	for(let i = 1; i < coordinates.length; i++)
         context.lineTo(coordinates[i].x, coordinates[i].y);
         
-    context.fill();
+    	context.fill();
 	context.closePath();
 }
 
@@ -140,17 +139,16 @@ function DrawClip()
 	canvas.height = 500;
 	canvas.width = 500;
 	context.fillStyle ="#FF0010";//"#FF0010";
-    let result_points = SuthHodgClip();
+    	let result_points = SuthHodgClip();
 
 	context.strokeRect(array[0], array[1], array[2], array[3]);
-    context.beginPath();
-    context.moveTo(result_points[0][0], result_points[0][1]);
+   	context.beginPath();
+    	context.moveTo(result_points[0][0], result_points[0][1]);
 
 	for(let i = 1; i < poly_size; i++) //draws triangle here coordinates.length
 	    context.lineTo(result_points[i][0], result_points[i][1]);
 
-
-    context.fill();
+    	context.fill();
 	context.closePath();
 
 }
